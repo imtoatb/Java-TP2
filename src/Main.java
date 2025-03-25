@@ -64,5 +64,36 @@ public class Main {
         Vehicle vehicle1 = new Vehicle(6.0); // Consumption doesn't matter for this test
         System.out.println("Vehicle 1 : " + vehicle1);
         */
+
+        Garage garage = new Garage();
+        Vehicle v1 = new Vehicle(5.0);
+        v1.drive(500);
+
+        Vehicle v2 = new Vehicle(6.0);
+        v2.drive(1500);
+
+        Vehicle v3 = new Vehicle(7.0);
+        v3.drive(800);
+
+        Vehicle v4 = new Vehicle(8.0);
+        v4.drive(200);
+
+        garage.addVehicle(v1);
+        garage.addVehicle(v2);
+        garage.addVehicle(v3);
+        garage.addVehicle(v4);
+
+        System.out.println(garage);
+
+        int removed = garage.removeHighMileageVehicles(1000);
+        System.out.println("\nRemoved " + removed + " vehicles with mileage > 1000 km");
+
+        System.out.println(garage);
+
+        Vehicle v5 = new Vehicle(4.5);
+        v5.drive(300);
+        garage.addVehicle(v5);
+
+        System.out.println(garage);
     }
 }
