@@ -2,7 +2,7 @@ public class Odometer {
     private double total;
     private double partiel;
 
-    public Odometer(double total, double partiel) {
+    public Odometer() {
         this.total = 0.0;
         this.partiel = 0.0;
     }
@@ -10,31 +10,20 @@ public class Odometer {
     public double getTotal() {
         return total;
     }
-    public void setTotal(float total) {
-        this.total = total;
-    }
 
     public double getPartiel() {
         return partiel;
     }
-    public void setPartiel(float partiel) {
-        this.partiel = partiel;
-    }
 
-    public void addKilometers(double kilometers) {
-        if (kilometers <= 0) {
-            throw new IllegalArgumentException("Kilometers must be positive");
-        }
+    public void increment(double kilometers) {
+        if (kilometers > 0) {
+            this.total += kilometers;
+            this.partiel += kilometers;
 
-        this.total += kilometers;
-        this.partiel += kilometers;
-
-
-        if (this.partiel == 1000.0) {
-            this.partiel = 0.0;
-        }
-        else if (this.partiel > 1000.0) {
-            this.partiel -= 1000.0;
+            // Handle partiel reset when reaching 1000 km
+            if (this.partiel >= 1000.0) {
+                this.partiel %= 1000.0;
+            }
         }
     }
 
@@ -44,6 +33,6 @@ public class Odometer {
 
     @Override
     public String toString() {
-        return "Odometer = [Total: " + this.total + " km | Partiel: " + this.partiel + " km]";
+        return String.format("[total = %.0f | partial = %.0f]", total, partiel);
     }
 }
