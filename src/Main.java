@@ -1,23 +1,18 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        CurrentDate d1 = new CurrentDate(0,0,0);
+        d1.setDay(27);
+        d1.setMonth(3);
+        d1.setYear(2022);
+        System.out.println("The date d1 is = " + d1);
 
+        CurrentDate d2 = new CurrentDate(27, 3, 2021);
+        System.out.println("The date d2 is = " + d2);
 
-        CurrentDate date1 = new CurrentDate(0, 0, 0);
-        date1.setDay(29);
-        date1.setMonth(2);
-        date1.setYear(2024);
-        CurrentDate date2 = new CurrentDate(1, 2, 2024);
-        date2.setDay(13);
-        date2.setMonth(9);
-        date2.setYear(2025);
-        CurrentDate date3 = date1;
+        if (!d1.equals(d2)) {
+            System.out.println(d1 + " is different of " + d2);
+        }
 
-        //System.out.println(date1.ToString());
-        //date1.DisplayDate();
-
-        System.out.println(date1.equals(date2)); // false
-        System.out.println(date1.equals(date3)); // true
+        System.out.println("The day of d2 is: " + d2.getDay());
     }
 }
